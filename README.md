@@ -70,8 +70,10 @@ FIN scans (-sF) work in an almost identical fashion; however, instead of sending
 ### 3) TCP Xmas Scans (``-sX``)  
 As with the other two scans in this class, Xmas scans (-sX) send a malformed TCP packet and expects a RST response for closed ports. It's referred to as an xmas scan as the flags that it sets (PSH, URG and FIN) give it the appearance of a blinking christmas tree.  
 
-TCP Connect Scan (``
-if Nmap sends a TCP request with the SYN flag set to a closed port, the target server will respond with a TCP packet with the RST (Reset) flag set
+
+
+
+
 
 
 

@@ -2,6 +2,9 @@
 
 Il y 65535 ports sur un ordinateurs. Les 1024 premiers sont les ports bien connus. 
 
+
+### Some common switches :
+
 ``-sS`` : Scan TCP SYN  
 ``-sU`` : Scan UDP  
 ``-O`` : Get operating System  

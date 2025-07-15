@@ -3,7 +3,7 @@
 Il y 65535 ports sur un ordinateurs. Les 1024 premiers sont les ports bien connus.  
 
 
-### :clipboard: Some common switches :  
+## :clipboard: Some common switches :  
 
 ``-sS`` : Scan TCP SYN  
 ``-sU`` : Scan UDP  
@@ -20,7 +20,7 @@ Il y 65535 ports sur un ordinateurs. Les 1024 premiers sont les ports bien connu
 `--script` : Activate a script from nmap library  
 `--script=vuln` : Activate all the scripts in the "vuln" category.  
 
-### 3 basics scans  
+## 3 basics scans  
 
 These are used in most situations  
 ####  1) TCP Connect Scans (``-sT``)  
@@ -33,7 +33,10 @@ If a port is closed, the flag RST is sent back from the target.
 As with TCP scans, SYN scans (-sS) are used to scan the TCP port-range of a target or targets; however, the two scan types work slightly differently. SYN scans are sometimes referred to as "Half-open" scans, or "Stealth" scans.  
 Where TCP scans perform a full three-way handshake with the target, SYN scans sends back a RST TCP packet after receiving a SYN/ACK from the server (this prevents the server from repeatedly trying to make the request)  
 
-
+**Advantages :**  
+* It can be used to bypass older Intrusion Detection systems as they are looking out for a full three way handshake. This is often no longer the case with modern IDS solutions; it is for this reason that SYN scans are still frequently referred to as "stealth" scans.  
+* SYN scans are often not logged by applications listening on open ports, as standard practice is to log a connection once it's been fully established.  
+* Without having to bother about completing (and disconnecting from) a three-way handshake for every port, SYN scans are significantly faster than a standard TCP Connect scan  
 
 
 #### 3) UDP Scans (``-sU``)  

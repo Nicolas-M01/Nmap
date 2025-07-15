@@ -38,17 +38,37 @@ Where TCP scans perform a full three-way handshake with the target, SYN scans se
 * SYN scans are often not logged by applications listening on open ports, as standard practice is to log a connection once it's been fully established.  
 * Without having to bother about completing (and disconnecting from) a three-way handshake for every port, SYN scans are significantly faster than a standard TCP Connect scan  
 
+**Drawbacks :**  
+* They require sudo permissions in order to work correctly in Linux.  
+* Unstable services are sometimes brought down by SYN scans  
+
+SYN scans are the default scans used by Nmap if run with sudo permissions  
+
+If a port is _closed_ then the server responds with a RST TCP packet.  
+If the port is filtered by a firewall then the TCP SYN packet is either dropped, or spoofed with a TCP reset  
+
+
 
 #### 3) UDP Scans (``-sU``)  
+Unlike TCP, UDP connections are stateless. This means that, rather than initiating a connection with a back-and-forth "handshake", UDP connections rely on sending packets to a target port and essentially hoping that they make it.  
+When a packet is sent to an open UDP port, there should be no response. When this happens, Nmap refers to the port as being open|filtered. In other words, it suspects that the port is open, but it could be firewalled. If it gets a UDP response (which is very unusual), then the port is marked as open. More commonly there is no response, in which case the request is sent a second time as a double-check. If there is still no response then the port is marked open|filtered and Nmap moves on.  
 
+When a packet is sent to a closed UDP port, the target should respond with an ICMP (ping) packet containing a message that the port is unreachable. This clearly identifies closed ports, which Nmap marks as such and moves on.  
 
+ UDP scans tend to be incredibly slow in comparison to the various TCP scans, so ``nmap -sU --top-ports 20 <target>`` allows nmap to scan the most commonly used 20 UDP ports, that reduces the time.  
 
+When UDP port is closed , we receive an ICMP packet "port unreachable".
 
-### Additional port scan types  
+## Additional port scan types  
 
-TCP Null Scans (``-sN``)  
-TCP FIN Scans (``-sF``)  
-TCP Xmas Scans (``-sX``)  
+### 1) TCP Null Scans (``-sN``)  
+As the name suggests, NULL scans (-sN) are when the TCP request is sent with no flags set at all. As per the RFC, the target host should respond with a RST if the port is closed.  
+
+### 2) TCP FIN Scans (``-sF``)  
+FIN scans (-sF) work in an almost identical fashion; however, instead of sending a completely empty packet, a request is sent with the FIN flag (usually used to gracefully close an active connection). Once again, Nmap expects a RST if the port is closed.  
+
+### 3) TCP Xmas Scans (``-sX``)  
+As with the other two scans in this class, Xmas scans (-sX) send a malformed TCP packet and expects a RST response for closed ports. It's referred to as an xmas scan as the flags that it sets (PSH, URG and FIN) give it the appearance of a blinking christmas tree.  
 
 TCP Connect Scan (``
 if Nmap sends a TCP request with the SYN flag set to a closed port, the target server will respond with a TCP packet with the RST (Reset) flag set

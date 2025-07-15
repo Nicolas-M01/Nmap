@@ -22,16 +22,33 @@ Il y 65535 ports sur un ordinateurs. Les 1024 premiers sont les ports bien connu
 
 ### 3 basics scans  
 
-* TCP Connect Scans (-sT)  
-* SYN "Half-open" Scans (-sS)  
-* UDP Scans (-sU)  
+These are used in most situations  
+####  1) TCP Connect Scans (``-sT``)  
+If Nmap sends a TCP request with the SYN flag set to a _closed_ port, the target server will respond with a TCP packet with the RST (Reset) flag set and Nmap can establish that the port is closed  
+If, however, the request is sent to an _open_ port, the target will respond with a TCP packet with the SYN/ACK flags set. Nmap then marks this port as being open (and completes the handshake by sending back a TCP packet with ACK set).  
+If the port is open but hidden behind a firewall, the firewall will _drop_ incomings packets. Nmap sends a TCP SYN request, and receives nothing back. This indicates that the port is being protected by a firewall and thus the port is considered to be filtered.  
+If a port is closed, the flag RST is sent back from the target.  
+
+#### 2) SYN "Half-open" Scans (``-sS``)  
+As with TCP scans, SYN scans (-sS) are used to scan the TCP port-range of a target or targets; however, the two scan types work slightly differently. SYN scans are sometimes referred to as "Half-open" scans, or "Stealth" scans.  
+Where TCP scans perform a full three-way handshake with the target, SYN scans sends back a RST TCP packet after receiving a SYN/ACK from the server (this prevents the server from repeatedly trying to make the request)  
 
 
 
 
+#### 3) UDP Scans (``-sU``)  
 
 
 
+
+### Additional port scan types  
+
+TCP Null Scans (``-sN``)  
+TCP FIN Scans (``-sF``)  
+TCP Xmas Scans (``-sX``)  
+
+TCP Connect Scan (``
+if Nmap sends a TCP request with the SYN flag set to a closed port, the target server will respond with a TCP packet with the RST (Reset) flag set
 
 
 

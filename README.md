@@ -19,6 +19,7 @@ Il y 65535 ports sur un ordinateurs. Les 1024 premiers sont les ports bien connu
 `-p-` : Scan ***All*** ports  
 `--script` : Activate a script from nmap library  
 `--script=vuln` : Activate all the scripts in the "vuln" category.  
+`-Pn` : Treat all hosts as online -- skip host discovery
 
 ## 3 basics scans  
 

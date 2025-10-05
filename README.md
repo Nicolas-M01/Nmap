@@ -26,8 +26,7 @@ Il y 65535 ports sur un ordinateurs. Les 1024 premiers sont les ports bien connu
 These are used in most situations  
 ####  1) TCP Connect Scans (``-sT``)  
 
-**Par défaut, nmap effectue un SYN scan (-sS) si vous avez les privilèges nécessaires (sous Unix : root; sous Windows : exécuté en administrateur et avec un driver pcap/npcap).  
-Le SYN scan est un scan « half‑open » : envoie un SYN, attend SYN+ACK puis envoie RST (pas de connexion TCP complète).**  
+**Sans privilège (non Root et non Admin), nmap lancera un TCP connect scan (-sT). Le connect fait la connexion TCP complète (3‑way handshake) via l'API système (plus bruyant, plus détectable).**  
 
 If Nmap sends a TCP request with the SYN flag set to a _closed_ port, the target server will respond with a TCP packet with the RST (Reset) flag set and Nmap can establish that the port is closed  
 If, however, the request is sent to an _open_ port, the target will respond with a TCP packet with the SYN/ACK flags set. Nmap then marks this port as being open (and completes the handshake by sending back a TCP packet with ACK set).  
@@ -35,6 +34,11 @@ If the port is open but hidden behind a firewall, the firewall will _drop_ incom
 If a port is closed, the flag RST is sent back from the target.  
 
 #### 2) SYN "Half-open" Scans (``-sS``)  
+
+**Par défaut, nmap effectue un SYN scan (-sS) si vous avez les privilèges nécessaires (sous Unix : root; sous Windows : exécuté en administrateur et avec un driver pcap/npcap).  
+Le SYN scan est un scan « half‑open » : envoie un SYN, attend SYN+ACK puis envoie RST (pas de connexion TCP complète).**  
+
+
 As with TCP scans, SYN scans (-sS) are used to scan the TCP port-range of a target or targets; however, the two scan types work slightly differently. SYN scans are sometimes referred to as "Half-open" scans, or "Stealth" scans.  
 Where TCP scans perform a full three-way handshake with the target, SYN scans sends back a RST TCP packet after receiving a SYN/ACK from the server (this prevents the server from repeatedly trying to make the request)  
 

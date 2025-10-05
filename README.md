@@ -25,6 +25,10 @@ Il y 65535 ports sur un ordinateurs. Les 1024 premiers sont les ports bien connu
 
 These are used in most situations  
 ####  1) TCP Connect Scans (``-sT``)  
+
+**Par défaut, nmap effectue un SYN scan (-sS) si vous avez les privilèges nécessaires (sous Unix : root; sous Windows : exécuté en administrateur et avec un driver pcap/npcap).  
+Le SYN scan est un scan « half‑open » : envoie un SYN, attend SYN+ACK puis envoie RST (pas de connexion TCP complète).**  
+
 If Nmap sends a TCP request with the SYN flag set to a _closed_ port, the target server will respond with a TCP packet with the RST (Reset) flag set and Nmap can establish that the port is closed  
 If, however, the request is sent to an _open_ port, the target will respond with a TCP packet with the SYN/ACK flags set. Nmap then marks this port as being open (and completes the handshake by sending back a TCP packet with ACK set).  
 If the port is open but hidden behind a firewall, the firewall will _drop_ incomings packets. Nmap sends a TCP SYN request, and receives nothing back. This indicates that the port is being protected by a firewall and thus the port is considered to be filtered.  

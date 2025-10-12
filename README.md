@@ -8,8 +8,10 @@ Il y 65535 ports sur un ordinateurs. Les 1024 premiers sont les ports bien connu
 ``-sS`` : SYN Scan TCP  
 ``-sT`` : Connect Scan TCP  
 ``-sU`` : Scan UDP  
+`-sn` : ne scan pas, envoie des paquets ICMP pour détecter les hôtes présents.
 ``-O`` : Get operating System  
 ``-sV`` : Version du service.  
+`--version-intensity <0–9>` : Intensité des sondes de `sV`, valeur par défaut "7". Scan plus long et plus bruyant mais plus précis dans la version.
 `-v` : verbose,  `-vv` : verbose+ ...  
 `-oA` : Save in the 3 majors formats  
 `-oG` : Save results in "grepable" format  

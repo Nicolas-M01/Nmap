@@ -17,8 +17,8 @@ Il y 65535 ports sur un ordinateurs. Les 1024 premiers sont les ports bien connu
 `-v` : verbose,  `-vv` : verbose+ ...  
 `-oA` : Save in the 3 majors formats  
 `-oG` : Save results in "grepable" format  
-``-A`` : Agressive mode Enable OS detection, version detection, script scanning, and traceroute  
-`-T5` : Increase speed (from 1 to 5), be careful : higher speeds are noisier, and can incur errors  
+``-A`` : Agressive mode Enable OS detection (-O), version detection (-sV), script scanning (-sC), and traceroute (--traceroute)  
+`-T5` : Increase speed (from 0 to 5), be careful : higher speeds are noisier, and can incur errors. T3 est la vitesse par défaut.    
 `-p 80` : scan only port 80.  
 `-p 1000-1500` : Scan ports 1000 to 15000  
 `-p-` : Scan ***All*** ports  

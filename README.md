@@ -11,7 +11,9 @@ Il y 65535 ports sur un ordinateurs. Les 1024 premiers sont les ports bien connu
 `-sn` : ne scan pas, envoie des paquets ICMP pour détecter les hôtes présents.
 ``-O`` : Get operating System  
 ``-sV`` : Version du service.  
-`--version-intensity <0–9>` : Intensité des sondes de `sV`, valeur par défaut "7". Scan plus long et plus bruyant mais plus précis dans la version.
+`--version-intensity <0–9>` : Intensité des sondes de `sV`, valeur par défaut "7". Scan plus long et plus bruyant mais plus précis dans la version.  
+`-Pn` : Treat all hosts as online -- skip host discovery  
+`-F` : Mode "fast", les 100 ports les plus courants.  
 `-v` : verbose,  `-vv` : verbose+ ...  
 `-oA` : Save in the 3 majors formats  
 `-oG` : Save results in "grepable" format  
@@ -23,8 +25,8 @@ Il y 65535 ports sur un ordinateurs. Les 1024 premiers sont les ports bien connu
 `-sC` : Exécute la collection de scripts marqués "default" dans l’écosystème NSE (Nmap Scripting Engine). Ces scripts effectuent des tâches d’énumération et de vérification courantes. Les scripts "default" fournissent des infos utiles sans être trop intrusif.  
 `--script` : Activate a script from nmap library  
 `--script=vuln` : Activate all the scripts in the "vuln" category.  
-`-Pn` : Treat all hosts as online -- skip host discovery  
-`-F` : Mode "fast", les 100 ports les plus courants.  
+`ls -la /usr/share/nmaps/scripts/ | grep -e "ftp"` : Liste les scripts de scan contenant le nom "ftp". Ce qui permet ensuite de lancer nmap avec un script précis.  
+
 
 ## 3 basics scans  
 

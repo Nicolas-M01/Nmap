@@ -20,6 +20,7 @@ Il y 65535 ports sur un ordinateurs. Les 1024 premiers sont les ports bien connu
 `-p 80` : scan only port 80.  
 `-p 1000-1500` : Scan ports 1000 to 15000  
 `-p-` : Scan ***All*** ports  
+`-sC` : Exécute la collection de scripts marqués "default" dans l’écosystème NSE (Nmap Scripting Engine). Ces scripts effectuent des tâches d’énumération et de vérification courantes. Les scripts "default" fournissent des infos utiles sans être trop intrusif.  
 `--script` : Activate a script from nmap library  
 `--script=vuln` : Activate all the scripts in the "vuln" category.  
 `-Pn` : Treat all hosts as online -- skip host discovery  

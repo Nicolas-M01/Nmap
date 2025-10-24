@@ -29,6 +29,8 @@ Il y 65535 ports sur un ordinateurs. Les 1024 premiers sont les ports bien connu
 `--script=vuln` : Activate all the scripts in the "vuln" category.  
 `ls -la /usr/share/nmaps/scripts/ | grep -e "ftp"` : Liste les scripts de scan contenant le nom "ftp". Ce qui permet ensuite de lancer nmap avec un script précis.  
 To run a specific script, we would use ``--script=<script-name>``  
+
+**Firewall/IDS évasion**  
 `-f` : Fragmentation des paquets envoyés pendant le scan (généralement 8 octets chacun) (--mtu pour ajuster la taille max du fragment). Cela permet d'éviter les firewalls et IDS/IPS.  
 `--data-length <nombre>` : Ajouter un certain nombre d'octets aléatoires aux paquets envoyés par nmap. Evite les détections IDS/IPS, moins reconnaissable. Utile en obfuscation. Exemple : `nmap --data-length 50 192.168.1.10` (Ajoute 50 octets aléatoires à chaque paquet envoyé.)  
 `-D <leurre1,leurre2,...,ME <IP cible>` : Envoie de leurres (Decoys). Envoie des paquets avec plusieurs adresses IP sources fausses, pour masquer l’origine réelle du scan, `ME` suivi de la vraie IP cible pour pouvoir recevoir les paquets.  

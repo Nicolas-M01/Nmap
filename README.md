@@ -4,7 +4,6 @@
 Il y 65535 ports sur un ordinateurs. Les 1024 premiers sont les ports bien connus.  
 
 
-
 ## :clipboard: Some common switches :  
 
 ``-sS`` : SYN Scan TCP  

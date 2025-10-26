@@ -17,8 +17,6 @@ Il y 65535 ports sur un ordinateurs. Les 1024 premiers sont les ports bien connu
 `-Pn` : Treat all hosts as online -- skip host discovery  
 `-F` : Mode "fast", les 100 ports les plus courants.  
 `-v` : verbose,  `-vv` : verbose+ ...  
-`-oA` : Save in the 3 majors formats  
-`-oG` : Save results in "grepable" format  
 ``-A`` : Agressive mode Enable OS detection (-O), version detection (-sV), script scanning (-sC), and traceroute (--traceroute)  
 `-T5` : Increase speed (from 0 to 5), be careful : higher speeds are noisier, and can incur errors. T3 est la vitesse par défaut.    
 `-p 80` : scan only port 80.  
@@ -38,6 +36,13 @@ To run a specific script, we would use ``--script=<script-name>``
 
 
 `--host-timeout <time>` : Abandonne la cible après le temps défini.  
+
+**Output Formats**
+`-oA` : Save in the 3 majors formats (normal, XML, Grepable)  
+`-oG` : Save results in "grepable" format  
+`-oN` : Save results in normal format  
+`-oX` : Save results in XML format  
+
 
 
 ## 3 basics scans  

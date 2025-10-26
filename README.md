@@ -37,6 +37,9 @@ To run a specific script, we would use ``--script=<script-name>``
 `-g <port>` : modifier le port d'origine. Afin de tenter de contourner des règles simples de firewall/ACL  
 
 
+`--host-timeout <time>` : Abandonne la cible après le temps défini.  
+
+
 ## 3 basics scans  
 
 These are used in most situations  
